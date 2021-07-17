@@ -30,3 +30,4 @@ route::get("/catalog/edit/{id}", [CatalogController::class, "edit"])->name("cata
 
 
 Route::post("/loginpost", [Controller::class, "loginPost"])->name("user.loginPost");
+
