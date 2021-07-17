@@ -1,22 +1,25 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
 
     @include("plantilla.head")
 
-  </head>
-  <body class="bg-dark">
+</head>
+
+<body class="bg-dark">
     <div class="container">
 
-      @include("plantilla.header")
+        @include("plantilla.header")
 
-      @yield("contenido")
+        @yield("contenido")
 
-      @include("plantilla.footer")
+        @include("plantilla.footer")
 
     </div>
 
     @include('plantilla.script')
 
-  </body>
+</body>
+
 </html>
