@@ -22,6 +22,7 @@ route::get("/", [Controller::class, "index"])->name("index");
 route::get("/login", [UserController::class, "login"])->name("user.login");
 route::get("/logout", [UserController::class, "logout"])->name("user.logout");
 
+Route::post("/login", [UserController::class, "login_post"])->name("user.login_post");
 
 route::get("/catalog/", [CatalogController::class, "index"])->name("catalog.index");
 route::get("/catalog/show/{id}", [CatalogController::class, "show"])->name("catalog.show");
@@ -29,5 +30,4 @@ route::get("catalog/create", [CatalogController::class, "create"])->name("catalo
 route::get("/catalog/edit/{id}", [CatalogController::class, "edit"])->name("catalog.edit");
 
 
-Route::post("/loginpost", [Controller::class, "loginPost"])->name("user.loginPost");
 
