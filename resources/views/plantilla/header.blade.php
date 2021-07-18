@@ -1,7 +1,3 @@
-<p class="text-light">{{ "nombre: " . session("nombre")}}</p>
-<p class="text-light">{{ "rol: " . session("rol") }}</p>
-<br>
-
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -64,6 +60,24 @@
           <input class="form-control me-2" type="search" placeholder="buscar" aria-label="search" />
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
+
+        @if (session("nombre"))
+        <div class="d-flex">
+            <div class="nav-item navbar-brand">
+              <a class="text-white nav-link {{ Request::segment(1)=='inicio'?'active':'' }}" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrado como {{session("nombre")}}">
+
+              <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" width="32" height="32"
+                class="d-inline-block align-text-top rounded-circle" />
+              </a>
+            </div>
+        </div>
+
+
+
+
+
+        @endif
+
       </div>
     </div>
   </nav>
