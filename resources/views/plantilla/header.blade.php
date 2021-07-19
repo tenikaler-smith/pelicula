@@ -20,11 +20,13 @@
               href="{{ route('catalog.index') }}">Catálogo
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::segment(1)=='create'?'active':'' }}"
-              href="{{ Route('catalog.create') }}">Crear Pelicula
-            </a>
-          </li>
+          @if (session("rol")== 'admin')
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(1)=='create'?'active':'' }}"
+                href="{{ Route('catalog.create') }}">Crear Pelicula
+                </a>
+            </li>
+          @endif
 
           @if (!session("nombre"))
           <li class="nav-item">
@@ -61,24 +63,26 @@
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
 
-        @if (session("nombre"))
-        <div class="d-flex">
-            <div class="nav-item navbar-brand">
-              <a class="text-white nav-link {{ Request::segment(1)=='inicio'?'active':'' }}" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrado como {{session("nombre")}}">
-
-              <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" width="32" height="32"
-                class="d-inline-block align-text-top rounded-circle" />
-              </a>
-            </div>
-        </div>
-
-
-
-
-
-        @endif
-
       </div>
     </div>
   </nav>
 </header>
+
+
+{{-- @if (session("nombre"))
+<div class="toast-container text-white">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" width="32" height="32"
+                class="d-inline-block align-text-top rounded-circle rounded me-2" />
+            <strong class="me-auto text-white">Inicio de Sesión</strong>
+            <small class="text-muted text-white">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-white">
+            Registrado como {{session("nombre")}}
+        </div>
+    </div>
+</div>
+@endif --}}
+
