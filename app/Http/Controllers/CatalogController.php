@@ -24,7 +24,11 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        return view("catalog.create");
+        if(session("rol")=="admin"){
+            return view("catalog.create");
+        }else{
+            return redirect("noaccess");
+        }
     }
 
     /**
