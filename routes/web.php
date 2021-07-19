@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::get("/", [Controller::class, "index"])->name("index");
+route::get("/noaccess", [Controller::class, "noaccess"])->name("noaccess");
 
 
 route::get("/login", [UserController::class, "login"])->name("user.login");
