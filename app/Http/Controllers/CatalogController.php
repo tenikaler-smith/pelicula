@@ -61,7 +61,10 @@ class CatalogController extends Controller
      */
     public function edit($id) //Catalog $catalog
     {
-        return view("catalog.edit", ["id" => $id]);
+        if(session('rol')=="admin")
+            return view("catalog.edit", ["id" => $id]);
+        else
+            return redirect()->route("noaccess");
     }
 
     /**

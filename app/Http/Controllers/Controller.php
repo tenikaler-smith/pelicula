@@ -15,4 +15,8 @@ class Controller extends BaseController
     {
         return view("index");
     }
+
+    public function noaccess(){
+        return view("noaccess");
+    }
 }
