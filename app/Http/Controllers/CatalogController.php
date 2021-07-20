@@ -17,6 +17,24 @@ class CatalogController extends Controller
         return view("catalog.index");
     }
 
+    public function view_create()
+    {
+        $generos = array(
+            "0" => "--- Seleccione ---",
+            "1" => "Acción",
+            "2" => "Terror",
+            "3" => "Comedia",
+            "4" => "Infantil",
+            "5" => "Documental",
+            "6" => "Ciencia Ficción",
+            "7" => "Fantasia",
+            "8" => "Musical",
+            "9" => "Romance",
+            "10" => "Suspenso"
+        );
+        return view("catalog.create", ["generos" => $generos]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +47,10 @@ class CatalogController extends Controller
         }else{
             return redirect("noaccess");
         }
+    }
+
+    public function create_registrar(){
+        return "holaaa";
     }
 
     /**

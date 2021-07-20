@@ -29,4 +29,10 @@ $('#to-login').click(function(){
     $("#loginform").fadeIn();
 });
 
+$(".preloader").fadeOut();
 </script>
+
+
+{{-- <script>
+$(".preloader").fadeOut();
+</script> --}}

@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset("assets/back/img/logo.png")}}">
 <!-- Custom CSS -->
 {{-- <link href="{{asset("assets/back/dist/bootstrap-4.6.0-dist/css/bootstrap.min.css")}}" rel="stylesheet"> --}}
+<link href="{{asset("dist/css/style.min.css")}}" rel="stylesheet">
 <link href="{{asset("assets/back/dist/css/bootstrap.css")}}" rel="stylesheet" rel="stylesheet" >
 <!-- Bootstrap CSS -->
 {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"

@@ -21,7 +21,8 @@ route::get("/noaccess", [Controller::class, "noaccess"])->name("noaccess");
 
 
 route::get("/login", [UserController::class, "login"])->name("user.login");
-route::get("/create", [UserController::class, "create"])->name("user.create");
+route::get("/create", [UserController::class, "view_create"])->name("user.view_reate");
+
 route::get("/logout", [UserController::class, "logout"])->name("user.logout");
 
 Route::post("/login", [UserController::class, "login_post"])->name("user.login_post");
@@ -31,7 +32,9 @@ route::post("/create", [UserController::class, "create"])->name("user.create");
 route::get("/catalog/", [CatalogController::class, "index"])->name("catalog.index");
 route::get("/catalog/show/{id}", [CatalogController::class, "show"])->name("catalog.show");
 route::get("catalog/create", [CatalogController::class, "create"])->name("catalog.create");
+route::get("catalog/create", [CatalogController::class, "view_create"])->name("catalog.view_create");
+
 route::get("/catalog/edit/{id}", [CatalogController::class, "edit"])->name("catalog.edit");
 
-
+route::post("catalog/create", [CatalogController::class, "create_registrar"])->name("catalog.create_registrar");
 

@@ -5,7 +5,9 @@ Taller 7 - Catalogos
 @endsection
 
 @section('contenido')
-<br>
+
+
+
 <h3 class="text-center text-white">Catálogo de Peliculas</h3>
 <p class="text-center text-white">Ultimos Estrenos</p>
 
@@ -23,10 +25,10 @@ Taller 7 - Catalogos
                 <strong>Precio: $10.20</strong>
 
                 <p>Genero: Accion</p>
-                <a name="" id="" class="btn btn-dark text-center" href="{{ Route('catalog.show', [ 'id'=>$i ] ) }}">Ver
-                    Detalles</a>
-                <a name="" id="" class="btn btn-warning text-center"
-                    href="{{ Route('catalog.edit', [ 'id'=>$i ] ) }}">Editar</a>
+                <a name="" id="" class="btn btn-dark text-center" href="{{ Route('catalog.show', [ 'id'=>$i ] ) }}">Ver Detalles</a>
+                @if (session('rol')== "admin" )
+                    <a name="" id="" class="btn btn-warning text-center" href="{{ Route('catalog.edit', [ 'id'=>$i ] ) }}">Editar</a>
+                @endif
             </div>
         </div>
         <br>
