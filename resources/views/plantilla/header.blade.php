@@ -27,15 +27,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{session("nombre")}}
+                               Administrador  {{-- {{session("nombre")}} --}}
                                 </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item {{ Request::segment(1)=='create'?'active':'' }}"
-                                        href="{{ Route('catalog.create') }}"> Crear Pelicula
+                                <a class="dropdown-item" href="{{ Route('catalog.create') }}"> Crear Pelicula
                                 </a>
                                 <a class="dropdown-item" href="javascript:void(0)"></i> Crear Genero </a>
-                                <a class="dropdown-item {{ Request::segment(1)=='logout'?'active':'' }}" data-bs-toggle="modal"
-                                    data-bs-target="#modalSalir" href="#"> Listar Genero </a>
+                                <a class="dropdown-item" href="javascript:void(0)"> Listar Genero </a>
                             </ul>
                         </li>
                     @endif
@@ -49,9 +47,7 @@
                             Mis Compra
                             </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::segment(1)=='create'?'active':'' }}"
-                                    href="{{ Route('catalog.crecatalog.createate') }}"> Ver Factura
-                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)"> Ver Factura</a>
                             <a class="dropdown-item" href="javascript:void(0)"></i> Ver Pelicula </a>
                         </ul>
                     </li>
@@ -89,7 +85,7 @@
 
                     @if (session("rol")== 'tenismith')
                     <li class="nav-item px-2">
-                        <a class="nav-link position-relative" href="javascript:void(0)"><i class="fas fa-shopping-cart me-1 ms-1"></i>
+                        <a class="nav-link position-relative {{Request::segment(1)=='carrito'?'active':''}}" href="javascript:void(0)"><i class="fas fa-shopping-cart me-1 ms-1"></i>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger navbar-badge">
                                 0
                                 <span class="visually-hidden">unread messages</span>
@@ -104,13 +100,13 @@
                             <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" class="rounded-circle" width="32" height="32" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrado como {{session("nombre")}} ">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)">
+                            <a class="dropdown-item" href="{{route("user.edit")}}">
                                 <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" class="rounded-circle" width="64" height="64">
                                 {{session("nombre")}}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i> My Balance</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::segment(1)=='logout'?'active':'' }}" data-bs-toggle="modal"
+                            <a class="dropdown-item" data-bs-toggle="modal"
                             data-bs-target="#modalSalir" href="#"><i class="fa fa-power-off me-1 ms-1"></i> Cerrar Sesión</a>
                         </ul>
                     </li>
