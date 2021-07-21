@@ -78,7 +78,7 @@
                         </li>
                         <li class="nav-item p-1">
                             <a class="nav-link {{ Request::segment(1)   =='create'?'active':'' }} btn btn-primary"
-                                href="{{ route('user.create') }}">Registro
+                                href="{{ route('user.create') }}">Registrarse
                             </a>
                         </li>
                     @endif
@@ -97,11 +97,11 @@
                     @if (session("nombre"))
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" class="rounded-circle" width="32" height="32" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrado como {{session("nombre")}} ">
+                            <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user" class="rounded-circle" width="32" height="32" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrado como {{session("nombre")}} ">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route("user.edit")}}">
-                                <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" class="rounded-circle" width="64" height="64">
+                                <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user" class="rounded-circle" width="64" height="64">
                                 {{session("nombre")}}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i> My Balance</a>
