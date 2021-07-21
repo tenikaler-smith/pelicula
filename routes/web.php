@@ -26,10 +26,11 @@ route::get("/logout", [UserController::class, "logout"])->name("user.logout");
 Route::post("/login", [UserController::class, "login_post"])->name("user.login_post");
 
 
-route::get("/registro", [UserController::class, "create"])->name("user.create");
-route::post("/registro", [UserController::class, "store"])->name("user.store");
-route::get("/editar", [UserController::class, "edit"])->name("user.edit");
+route::get("/create", [UserController::class, "create"])->name("user.create");
+route::post("/create", [UserController::class, "store"])->name("user.store");
+route::get("/edit", [UserController::class, "edit"])->name("user.edit");
 route::post("/update", [UserController::class, "update"])->name("user.update");
+
 
 route::get("/catalog/", [CatalogController::class, "index"])->name("catalog.index");
 route::get("/catalog/show/{id}", [CatalogController::class, "show"])->name("catalog.show");
