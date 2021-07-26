@@ -10,7 +10,6 @@
 
 <script src="https://kit.fontawesome.com/dbefa9deda.js" crossorigin="anonymous">
 </script>
-
 <!-- This page plugin js -->
 <!-- ============================================================== -->
 <script>
@@ -30,6 +29,7 @@ $('#to-login').click(function(){
 });
 
 $(".preloader").fadeOut();
+
 </script>
 
 
