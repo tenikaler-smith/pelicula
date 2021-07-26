@@ -20,24 +20,6 @@ class UserController extends Controller
             return redirect("noaccess");
     }
 
-    public function view_create(){
-        $generos = array(
-            "0" => "--- Seleccione ---",
-            "1" => "Acción",
-            "2" => "Terror",
-            "3" => "Comedia",
-            "4" => "Infantil",
-            "5" => "Documental",
-            "6" => "Ciencia Ficción",
-            "7" => "Fantasia",
-            "8" => "Musical",
-            "9" => "Romance",
-            "10" => "Suspenso"
-        );
-        //return view("user.viewCreate", ["generos" => $generos]);
-        return view("user.view_create");
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -77,26 +59,26 @@ class UserController extends Controller
         $obj->usuario = $request->txtUser;
         $obj->password = md5($request->txtPassword);
         $obj->nombre = $request->txtNombre;
-        $obj->rol = "User";
+        $obj->rol = "user";
         $obj->save();
         return back()->with("success", "Usuario creado con éxito");
 
+        /*
+        $arrDatos = array($request->txtTitle, $request->selGenero, $request->txtResumen, $request->numPrecio);
 
+        if ($request->txtTitle == "" and $request->selGenero == "" and $request->txtResumen == "" and $request->numPrecio == "") {
+            return redirect()->route("")->with("danger", "debes llenar los todos datos")->withInput();
+        } else {
+            if ($request->selGenero == "0") {
+                return redirect()->route("user.create")->with("danger", "debes seleccinar un Genero")->withInput();
+            } else {
 
-        // $arrDatos = array($request->txtTitle, $request->selGenero, $request->txtResumen, $request->numPrecio);
-
-        // if ($request->txtTitle == "" and $request->selGenero == "" and $request->txtResumen == "" and $request->numPrecio == "") {
-        //     return redirect()->route("")->with("danger", "debes llenar los todos datos")->withInput();
-        // } else {
-        //     if ($request->selGenero == "0") {
-        //         return redirect()->route("user.create")->with("danger", "debes seleccinar un Genero")->withInput();
-        //     } else {
-
-        //         foreach ($arrDatos as $valor) {
-        //             return redirect()->route("user.create")->with("success", $valor)->withInput();
-        //         }
-        //     }
-        // }
+                foreach ($arrDatos as $valor) {
+                    return redirect()->route("user.create")->with("success", $valor)->withInput();
+                }
+            }
+        }
+        */
     }
 
 
@@ -112,8 +94,30 @@ class UserController extends Controller
             return view("user.edit");
         else
             return redirect("noaccess");
+    }
 
-        // $usuario = User::find($id_user);
+
+    public function update(Request $request)
+    {
+        if ($request->txtPassword != $request->txtPassword2)
+            return back()->with("estado2", "Las contraseñas no coinciden")->withInput();
+
+        if ($request->txtPassword == "" || $request->txtPassword2 == "")
+            return back()->with("estado2", "Las contraseñas no pueden estar vacias")->withInput();
+
+        $obj = User::find(session('id_user'));
+        $obj->usuario = $request->txtUser;
+        $obj->nombre = $request->txtNombre;
+        $obj->password = md5($request->txtPassword);
+        $obj->rol = "user";
+
+
+        $obj->save();
+        
+        session(["usuario"=>$request->txtUser]);
+        session(["nombre"=>$request->txtNombre]);
+        session(["password"=> md5($request->txtPassword)]);
+        return back()->with("success", "Usuario Actualizado con éxito");
     }
 
 

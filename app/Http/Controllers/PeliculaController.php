@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
+use App\Models\Pelicula;
 use Illuminate\Http\Request;
 
-class CatalogController extends Controller
+class PeliculaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,7 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        return view("catalog.index");
-    }
-
-    public function view_create()
-    {
-
-        return view("catalog.create");
+        //
     }
 
     /**
@@ -30,15 +24,7 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        if(session("rol")=="admin"){
-            return view("catalog.create");
-        }else{
-            return redirect("noaccess");
-        }
-    }
-
-    public function create_registrar(){
-        return "holaaa";
+        //
     }
 
     /**
@@ -55,36 +41,33 @@ class CatalogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Catalog  $catalog
+     * @param  \App\Models\Pelicula  $pelicula
      * @return \Illuminate\Http\Response
      */
-    public function show($id) //Catalog $catalog
+    public function show(Pelicula $pelicula)
     {
-        return view("catalog.show", ["id" => $id]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Catalog  $catalog
+     * @param  \App\Models\Pelicula  $pelicula
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) //Catalog $catalog
+    public function edit(Pelicula $pelicula)
     {
-        if(session('rol')=="admin")
-            return view("catalog.edit", ["id" => $id]);
-        else
-            return redirect()->route("noaccess");
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Catalog  $catalog
+     * @param  \App\Models\Pelicula  $pelicula
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Catalog $catalog)
+    public function update(Request $request, Pelicula $pelicula)
     {
         //
     }
@@ -92,10 +75,10 @@ class CatalogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Catalog  $catalog
+     * @param  \App\Models\Pelicula  $pelicula
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catalog $catalog)
+    public function destroy(Pelicula $pelicula)
     {
         //
     }
