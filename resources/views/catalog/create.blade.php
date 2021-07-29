@@ -1,113 +1,122 @@
-    @extends('plantilla.layout')
+@extends('plantilla.layout')
 
-    @section('titulo')
-        Taller 7 - Crear Pelicula
-    @endsection
+@section('titulo') Crear Pelicula @endsection
 
-    @section('contenido')
-      <br>
+@section('contenido')
 
-    <div class="card">
-      <div class="card-body">
-        <div class="text-center m-auto">
-          <h4 class="text-uppercase text-center">Crear Catálogo</h4>
+<div class="col-sm-4"></div>
+
+<section class="container mt-5 pt-5 mb-5">
+    <article class="col">
+
+        <div class="row">
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <div id="alertDanger">
+                        @if (session('danger'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="#myAlert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <strong>{{ session('danger') }}</strong>
+                        </div>
+                        @endif
+                    </div>
+                    <div id="alertSuccess">
+                        @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ session('success') }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <div class="text-center m-auto">
+                                <h4 class="text-uppercase text-center">Crear Catálogo</h4>
+                            </div>
+
+                            <form action="{{ Route('catalog.store') }}" method="post" role="form">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="txtTitle" class="col-sm-3 text-end control-label col-form-label">Título de la Pelicula</label>
+                                    <div class="row col-sm-9">
+                                        <input type="text" name="txtTitle" value="{{old('txtTitle')}}" id="txtTitle"
+                                            class="form-control" placeholder="Título">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="selGenero" class="col-sm-3 text-end control-label col-form-label">Género</label>
+                                    <div class="row col-sm-9">
+                                        <select name="selGenero" class=" col-sm-6 form-select dropdown form-control" aria-label="genero">
+                                            @foreach ($generos as $genero)
+                                            <option class="dropdown-item" value="{{$genero->id}}">{{$genero->descripcion}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtDescripcion" class="col-sm-3 text-end control-label col-form-label">Descripcion</label>
+                                    <div class="row col-sm-9">
+                                        <input type="text" name="txtDescripcion" value="{{old('txtDescripcion')}}" id="txtDescripcion"
+                                            class="form-control" placeholder="Descripción">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="numPrecio" class="col-sm-3 text-end control-label col-form-label">Precio</label>
+                                    <div class="row col-sm-9">
+                                        <input type="text" name="numPrecio" value="{{old('numPrecio')}}" id="numPrecio"
+                                            class="form-control" placeholder="Precio">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtImagen" class="col-sm-3 text-end control-label col-form-label">Imagen</label>
+                                    <div class="row col-sm-9">
+                                        <input type="text" class="form-control" id="" placeholder="Imagen" name ="txtImagen">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtVideo" class="col-sm-3 text-end control-label col-form-label">Video</label>
+                                    <div class="row col-sm-9">
+                                        <input type="text" class="form-control" id="" placeholder="link del video" name ="txtVideo">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtVideo" class="col-sm-3 text-end control-label col-form-label">Trailer</label>
+                                    <div class="row col-sm-9">
+                                        <input type="text" class="form-control" id="" placeholder="Trailer" name ="txtTrailer">
+                                    </div>
+                                </div>
+
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <div class="form-group mb-0 text-center">
+                                            <button class="btn btn-warning btn-block" type="submit" name="submit"> Guardar </button>
+                                            |
+                                            <button type="reset" name="reset" class="btn btn-dark btn-block"> Cancelar </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
         </div>
+    </article>
+</section>
 
 
-
-<section class="row">
-            <article class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="text-center m-auto">
-                            <h4 class="text-uppercase text-center">Crear Catálogo</h4>
-                        </div>
-                        <div id="alertDanger">
-                            @if (session('danger'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="#myAlert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                <strong>{{ session('danger') }}</strong>
-                            </div>
-                            @endif
-                        </div>
-
-                        <form action="{{ Route('catalog.create_registrar') }}" method="post" role="form">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="txtTitle" class="col-sm-2 form-label">Título de la Pelicula</label>
-                                <div class="row col-sm-6">
-                                    <input type="txtTitle" name="txtTitle" value="{{old('txtTitle')}}" id="txtTitle"
-                                        class="form-control" placeholder="Título">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="txtTitle" class="col-sm-2 form-label">Género</label>
-                                <div class="row col-sm-6">
-                                    <select name="selGenero" class=" col-sm-6 form-select dropdown form-control"
-                                        aria-label="genero">
-                                        @foreach ($generos as $clave=>$value)
-                                        <option class="dropdown-item" value="{{$clave}}">{{$value}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="txtResumen" class="col-sm-2 form-label">Resumen</label>
-                                <div class="row col-sm-6">
-                                    <input type="txtResumen" name="txtResumen" value="{{old('txtResumen')}}" id="txtResumen"
-                                        class="form-control" placeholder="Resumen">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="numPrecio" class="col-sm-2 form-label">Precio</label>
-                                <div class="row col-sm-6">
-                                    <input type="numPrecio" name="numPrecio" value="{{old('numPrecio')}}" id="numPrecio"
-                                        class="form-control" placeholder="Precio">
-                                </div>
-                            </div>
-
-                            <div>
-                                <button type="submit" class="btn btn-primary">procesar</button>|<button type="reset"
-                                    class="btn btn-warning">Borrar</button>
-                            </div>
-
-                        </form>
-
-                    </div>
-                </div>
-            </article>
-        </section>
-        <br>
-        <hr>
-        <br>
-        <section>
-            <article class="col" id="CardCalcularPrecio4">
-                @if (session('success'))
-                <div>
-                    <div class="card border-success mb-3 w-50">
-                        <div class="card-header bg-transparent border-success">
-                            <h5 class="card-title">El resultado de la operación</h5>
-                        </div>
-                        <div class="card-body text-success">
-                            <p class="card-text"><strong>Datos Guardados</strong></p>
-                            <p class="card-text"><strong>{{ session('success') }}</strong></p>
-                        </div>
-                        <div class="footer">
-                            <button id="problema9" class="btn btn-warning">Limpiar</button>
-                        </div>
-                    </div>
-                </div>
-                @endif
-            </article>
-        </section>
-
-
-
-      </div>
-    </div>
-    <br/>
-  @endsection
+<div class="col-sm-4"></div>
+@endsection

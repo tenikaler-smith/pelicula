@@ -1,7 +1,6 @@
 @extends('plantilla.layout')
 
-@section('title')
-Taller 7 - Pelicula
+@section('title') Pelicula
 @endsection
 
 @section('contenido')
@@ -55,22 +54,60 @@ Taller 7 - Pelicula
 
 <br>
 
+
 <h3 class="text-white text-center">Catálogo de Peliculas</h3>
 <p class="text-white text-center">Ultimos Estrenos</p>
 
 <div class="row">
-  @for ($i = 1; $i <= 4; $i++) <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3">
-    <div class="card">
-      <img class="card-img-top" src="{{asset("assets/back/img/catalog/$i.jpg")}}" alt="">
-      <div class="card-body">
-        <h4 class="card-title text-center">Pelicula {{ $i }}</h4>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi saepe, ea ratione quos iusto aspernatur quam rem distinctio quisquam possimus non molestiae est libero harum abassumenda! Corrupti, qui assumenda!</p>
-        <a name="" id="" class="btn btn-warning text-center" href="{{ Route('catalog.show', [ 'id'=>$i ] ) }}">Ver Detalles</a>
-      </div>
-    </div>
-    <br>
-</div>
-@endfor
+    @foreach ( $resultados as $resultado )
+
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3">
+            <div class="card">
+                <img class="card-img-top" src="{{$resultado->imagen}}" alt="">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Pelicula {{ $resultado->titulo }}</h4>
+                    <p>Precio:<strong>{{ $resultado->precio }}</strong></p>
+                    <p>Genero: <strong>{{ $resultado->generos }}</strong></p>
+
+                    @if (session("rol")=="admin")
+                    <a class="btn btn-dark" href="{{ Route('catalog.show', [ $resultado->id ] ) }}">Ver Detalles</a>
+                    <a href="{{route("catalog.edit", ['id'=>$resultado->id ] )}}" class="btn btn-warning">Editar</a>
+                    <button type="button" class="btn btn-danger text-center" data-bs-toggle="modal"
+                        data-bs-target="#modelId{{ $resultado->id }}">Eliminar</button>
+                    <!-- Button trigger modal -->
+
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modelId{{ $resultado->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Eliminar {{ $resultado->titulo }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                        Esta seguro que desea eliminar la pelicula <strong>{{$resultado->titulo}}</strong>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <a href="{{ route('catalog.destroy', ['id'=>$resultado->id]) }}"><button type="button"
+                                            class="btn btn-primary">Si</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        <br>
+        </div>
+
+    @endforeach
 </div>
 
 @endsection

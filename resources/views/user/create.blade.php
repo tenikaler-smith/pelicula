@@ -6,6 +6,7 @@
 
 @section('contenido')
 <section class="row">
+<div class="col-sm-4"></div>
     <div class="container mt-5 pt-5 mb-5">
         <div class="row">
             <div class="row justify-content-center">
@@ -101,9 +102,6 @@
                                                 |
                                                 <button type="reset" name="reset" class="btn btn-dark btn-block"> Cancelar </button>
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>

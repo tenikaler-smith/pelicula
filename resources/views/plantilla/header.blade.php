@@ -83,7 +83,7 @@
                         </li>
                     @endif
 
-                    @if (session("rol")== 'tenismith')
+                    @if (session("nombre"))
                     <li class="nav-item px-2">
                         <a class="nav-link position-relative {{Request::segment(1)=='carrito'?'active':''}}" href="javascript:void(0)"><i class="fas fa-shopping-cart me-1 ms-1"></i>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger navbar-badge">
