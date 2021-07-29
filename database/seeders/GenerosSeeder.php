@@ -24,9 +24,9 @@ class GenerosSeeder extends Seeder
         DB::table("generos")->insert(["descripcion" => "Drama", "created_at" => now(), "updated_at" => now()]);
         DB::table("generos")->insert(["descripcion" => "Fantasía", "created_at" => now(), "updated_at" => now()]);
         DB::table("generos")->insert(["descripcion" => "Musical", "created_at" => now(), "updated_at" => now()]);
-        DB::table("generos")->insert(["descripcion" => "3d", "created_at" => now(), "updated_at" => now()]);
+        DB::table("generos")->insert(["descripcion" => "3D", "created_at" => now(), "updated_at" => now()]);
         DB::table("generos")->insert(["descripcion" => "Documental", "created_at" => now(), "updated_at" => now()]);
-        DB::table("generos")->insert(["descripcion" => "Religiosas", "created_at" => now(), "updated_at" => now()]);
+        DB::table("generos")->insert(["descripcion" => "Cristianos", "created_at" => now(), "updated_at" => now()]);
         DB::table("generos")->insert(["descripcion" => "Policivas", "created_at" => now(), "updated_at" => now()]);
         DB::table("generos")->insert(["descripcion" => "Deportivas", "created_at" => now(), "updated_at" => now()]);
         DB::table("generos")->insert(["descripcion" => "Terror", "created_at" => now(), "updated_at" => now()]);
