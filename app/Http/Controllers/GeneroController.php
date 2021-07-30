@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Genero;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GeneroController extends Controller
 {
@@ -14,7 +15,9 @@ class GeneroController extends Controller
      */
     public function index()
     {
-        //
+        $resultados = DB::table("generos")->get();
+        return view('genero.index', ['resultados' => $resultados]);
+
     }
 
     /**
@@ -24,7 +27,11 @@ class GeneroController extends Controller
      */
     public function create()
     {
-        //
+        if(session("rol")=="admin"){
+            return view('genero.create');
+        }else{
+            return redirect('noaccess');
+        }
     }
 
     /**
@@ -35,7 +42,11 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $obj = new Genero();
+        $obj->descripcion = $request->txtDescripcion;
+
+        $obj->save();
+        return back()->with("success", "Genero $obj->id creado con exito");
     }
 
     /**
@@ -44,7 +55,7 @@ class GeneroController extends Controller
      * @param  \App\Models\Genero  $genero
      * @return \Illuminate\Http\Response
      */
-    public function show(Genero $genero)
+    public function show($id)
     {
         //
     }
@@ -55,9 +66,14 @@ class GeneroController extends Controller
      * @param  \App\Models\Genero  $genero
      * @return \Illuminate\Http\Response
      */
-    public function edit(Genero $genero)
+    public function edit($id)
     {
-        //
+        if(session("rol")=="admin"){
+            $resultados = Genero::find($id);
+            return view('genero.edit', ['resultados' => $resultados]);
+        }else{
+            return redirect('noaccess');
+        }
     }
 
     /**
@@ -67,9 +83,13 @@ class GeneroController extends Controller
      * @param  \App\Models\Genero  $genero
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Genero $genero)
+    public function update(Request $request)
     {
-        //
+        $obj = Genero::find($request->id);
+        $obj->descripcion = $request->txtDescripcion;
+
+        $obj->save();
+        return back()->with("success", "Genero $obj->id se Actualizado con exito");
     }
 
     /**
