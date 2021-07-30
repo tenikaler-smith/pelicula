@@ -7,6 +7,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset("assets/back/img/logo.png")}}">
 <!-- Custom CSS -->
 {{-- <link href="{{asset("assets/back/dist/bootstrap-4.6.0-dist/css/bootstrap.min.css")}}" rel="stylesheet"> --}}
+<link rel="stylesheet" type="text/css" href="{{asset("assets/extra-libs/multicheck/multicheck.css")}}">
+<link href="{{asset("assets/back/dist/libs/datatables.net-bs4/css/dataTables.bootstrap4.css")}}" rel="stylesheet">
 <link href="{{asset("dist/css/style.min.css")}}" rel="stylesheet">
 <link href="{{asset("assets/back/dist/css/bootstrap.css")}}" rel="stylesheet" rel="stylesheet">
 <link href="{{asset("assets/back/dist/libs/magnific-popup/dist/magnific-popup.css")}}" rel="stylesheet">

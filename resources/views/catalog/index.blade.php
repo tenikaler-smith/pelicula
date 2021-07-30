@@ -16,23 +16,17 @@ Taller 7 - Catalogos
                     <img class="card-img-top" src="{{asset("$catalogo->imagen")}}" alt="">
                     <div class="card-body">
                         <h4 class="card-title text-center">{{ $catalogo->titulo }}</h4>
-                        <p class="card-text"></p>
-                        <strong>Precio: $ {{ $catalogo->precio }}</strong>
 
-                        <p>Genero: {{ $catalogo->generos }}</p>
+                        <p><a name="" id="" class="btn btn-dark card-text" href="{{ Route('catalog.show', [ 'id'=>$catalogo->id ] ) }}">Ver Detalles <i class="fas fa-eye"></i></a></p>
 
-                        <a name="" id="" class="btn btn-dark text-center"
-                            href="{{ Route('catalog.show', [ 'id'=>$catalogo->id ] ) }}">Ver Detalles</a>
+                        <p class="card-text">Precio: $ <strong>{{ $catalogo->precio }}</strong></p>
+                        <p class="card-text" >Genero: <strong>{{ $catalogo->generos }}</strong></p>
+
 
                         @if (session('rol')== "admin" )
-                            <a name="" id="" class="btn btn-warning text-center"
-                                href="{{ Route('catalog.edit', [ 'id'=>$catalogo->id ] ) }}">Editar</a>
+                            <a name="" id="" class="btn btn-warning" href="{{ Route('catalog.edit', [ 'id'=>$catalogo->id ] ) }}">Editar <i class="fas fa-edit" aria-hidden="true"></i></a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger text-center" data-bs-toggle="modal" data-bs-target="#modelId{{ $catalogo->id }}">Eliminar</button>
-                            <!-- Button trigger modal -->
-
-
-
+                            <button type="button" class="btn btn-danger text-center" data-bs-toggle="modal" data-bs-target="#modelId{{ $catalogo->id }}">Eliminar <i class="fas fa-trash-alt"></i></button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="modelId{{ $catalogo->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -56,7 +50,7 @@ Taller 7 - Catalogos
                                     </div>
                                 </div>
                             </div>
-                            
+
                         @endif
                     </div>
                 </div>

@@ -21,41 +21,32 @@
                         </a>
                     </li>
 
+                    @if(session("rol")=="user")
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+                            data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                            aria-expanded="false">Mis Compras</a>
+                        <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('factura.index')}}">Ver Facturas</a>
+                            <a class="dropdown-item" href="{{route('factura-detalle.index')}}">Ver Peliculas</a>
+                        </ul>
+                    </li>
+                    @endif
 
                     @if (session("rol")== 'admin')
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               Administrador  {{-- {{session("nombre")}} --}}
-                                </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ Route('catalog.create') }}"> Crear Pelicula
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)"></i> Crear Genero </a>
-                                <a class="dropdown-item" href="javascript:void(0)"> Listar Genero </a>
-                            </ul>
-                        </li>
-                    @endif
-
-
-                    @if (session("rol")== 'tenismith')
-
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mis Compra
-                            </a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrador {{-- {{session("nombre")}} --}}
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)"> Ver Factura</a>
-                            <a class="dropdown-item" href="javascript:void(0)"></i> Ver Pelicula </a>
+                            <a class="dropdown-item" href="{{ Route('catalog.create') }}"> Crear Pelicula</a>
+                            <a class="dropdown-item" href="{{route("genero.create")}}"></i> Crear Genero </a>
+                            <a class="dropdown-item" href="{{route("genero.index")}}"> Listar Genero </a>
                         </ul>
                     </li>
-
-
                     @endif
-
-
 
                     <form class="d-flex px-5">
                         <input class="form-control me-2" type="search" placeholder="buscar" aria-label="search" />
@@ -65,28 +56,27 @@
 
 
 
-
-
-
                 <!-- perfil de usuario -->
                 <ul class="navbar-nav float-end">
                     @if (!session("nombre"))
-                        <li class="nav-item p-1">
-                            <a class="nav-link {{ Request::segment(1)=='login'?'active':'' }} btn btn-light text-secondary"
-                                href="{{ route('user.login') }}">Iniciar Sesión
-                            </a>
-                        </li>
-                        <li class="nav-item p-1">
-                            <a class="nav-link {{ Request::segment(1)   =='create'?'active':'' }} btn btn-primary"
-                                href="{{ route('user.create') }}">Registrarse
-                            </a>
-                        </li>
+                    <li class="nav-item p-1">
+                        <a class="nav-link {{ Request::segment(1)=='login'?'active':'' }} btn btn-light text-secondary"
+                            href="{{ route('user.login') }}">Iniciar Sesión
+                        </a>
+                    </li>
+                    <li class="nav-item p-1">
+                        <a class="nav-link {{ Request::segment(1)   =='create'?'active':'' }} btn btn-primary"
+                            href="{{ route('user.create') }}">Registrarse
+                        </a>
+                    </li>
                     @endif
 
                     @if (session("nombre"))
                     <li class="nav-item px-2">
-                        <a class="nav-link position-relative {{Request::segment(1)=='carrito'?'active':''}}" href="javascript:void(0)"><i class="fas fa-shopping-cart me-1 ms-1"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger navbar-badge">
+                        <a class="nav-link position-relative {{Request::segment(1)=='carrito'?'active':''}}"
+                            href="{{route("carrito.index")}}"><i class="fas fa-shopping-cart me-1 ms-1"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger navbar-badge">
                                 0
                                 <span class="visually-hidden">unread messages</span>
                             </span>
@@ -96,18 +86,23 @@
 
                     @if (session("nombre"))
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user" class="rounded-circle" width="32" height="32" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrado como {{session("nombre")}} ">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user" class="rounded-circle"
+                                width="32" height="32" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                title="Registrado como {{session("nombre")}} ">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route("user.edit")}}">
-                                <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user" class="rounded-circle" width="64" height="64">
+                                <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user"
+                                    class="rounded-circle" width="64" height="64">
                                 {{session("nombre")}}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i> My Balance</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i> My
+                                Balance</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" data-bs-toggle="modal"
-                            data-bs-target="#modalSalir" href="#"><i class="fa fa-power-off me-1 ms-1"></i> Cerrar Sesión</a>
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSalir" href="#"><i
+                                    class="fa fa-power-off me-1 ms-1"></i> Cerrar Sesión</a>
                         </ul>
                     </li>
                     @endif
@@ -115,8 +110,8 @@
                 </ul>
                 <!-- perfil de usuario -->
                 <!-- Modal -->
-                <div class="modal fade" id="modalSalir" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="modalSalir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body">

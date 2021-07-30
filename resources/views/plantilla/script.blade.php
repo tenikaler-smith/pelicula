@@ -16,6 +16,27 @@
 <script src="{{asset("assets/back/dist/libs/magnific-popup/dist/jquery.magnific-popup.min.js")}}"></script>
 <script src="{{asset("assets/back/dist/libs/magnific-popup/meg.init.js")}}"></script>
 
+<script src="{{asset("assets/extra-libs/multicheck/datatable-checkbox-init.js")}}"></script>
+<script src="{{asset("assets/extra-libs/multicheck/jquery.multicheck.js")}}"></script>
+<script src="{{asset("assets/extra-libs/DataTables/datatables.min.js")}}"></script>
+<script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+
+    $(document).ready(function() {
+        $('#zero_config').DataTable( {
+        "language": {
+        "lengthMenu": "Desplegando _MENU_ Registros por pagina",
+        "zeroRecords": "Lo sentimos, no se encontro",
+        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+        "infoEmpty": "No hay registros ",
+        "infoFiltered": "(filtered from _MAX_ total de registros)"
+        }
+        } );
+    } );
+
+</script>
 
 
 
@@ -24,8 +45,7 @@
 <!-- This page plugin js -->
 <!-- ============================================================== -->
 <script>
-
-$(".preloader").fadeOut();
+    $(".preloader").fadeOut();
 // ==============================================================
 // Login and Recover Password
 // ==============================================================
@@ -40,6 +60,7 @@ $('#to-login').click(function(){
 });
 
 $(".preloader").fadeOut();
+
 
 </script>
 

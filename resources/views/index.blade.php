@@ -65,15 +65,17 @@
             <div class="card">
                 <img class="card-img-top" src="{{$resultado->imagen}}" alt="">
                 <div class="card-body">
-                    <h4 class="card-title text-center">Pelicula {{ $resultado->titulo }}</h4>
-                    <p>Precio:<strong>{{ $resultado->precio }}</strong></p>
-                    <p>Genero: <strong>{{ $resultado->generos }}</strong></p>
+                    <h4 class="card-title text-center">{{ $resultado->titulo }}</h4>
+                    <p><a class="btn btn-dark" href="{{ Route('catalog.show', [ $resultado->id ] ) }}">Ver Detalles <i class="fas fa-eye"></i> </a></p>
+
+                    <p class="card-text">Precio:<strong>{{ $resultado->precio }}</strong></p>
+                    <p class="card-text">Genero: <strong>{{ $resultado->generos }}</strong></p>
+
 
                     @if (session("rol")=="admin")
-                    <a class="btn btn-dark" href="{{ Route('catalog.show', [ $resultado->id ] ) }}">Ver Detalles</a>
-                    <a href="{{route("catalog.edit", ['id'=>$resultado->id ] )}}" class="btn btn-warning">Editar</a>
+                    <a href="{{route("catalog.edit", ['id'=>$resultado->id ] )}}" class="btn btn-warning">Editar <i class="fas fa-edit" aria-hidden="true"></i> </a>
                     <button type="button" class="btn btn-danger text-center" data-bs-toggle="modal"
-                        data-bs-target="#modelId{{ $resultado->id }}">Eliminar</button>
+                        data-bs-target="#modelId{{ $resultado->id }}">Eliminar <i class="fas fa-trash-alt"></i></button>
                     <!-- Button trigger modal -->
 
 

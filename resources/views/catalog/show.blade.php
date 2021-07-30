@@ -49,8 +49,7 @@
                             </td>
 
                             <td>
-                                {{-- {{route('carrito.store')}} --}}
-                                <form action="" method="post">
+                                <form action="{{route('carrito.store')}}" method="post">
                                     @csrf
 
                                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen1">
@@ -69,7 +68,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>|
+                                    </div>
 
                                     @if(session("rol")=="user")
                                         <input type="hidden" name="id_pelicula" value="{{$catalogo->id}}">
