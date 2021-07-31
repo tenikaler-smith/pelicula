@@ -98,8 +98,10 @@ class GeneroController extends Controller
      * @param  \App\Models\Genero  $genero
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Genero $genero)
+    public function destroy($id)
     {
-        //
+        $obj = Genero::find($id);
+        $obj->delete();
+        return back()->with("success", "Genero $obj->id eliminado con exito");
     }
 }
