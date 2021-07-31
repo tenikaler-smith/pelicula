@@ -71,30 +71,29 @@
                     </li>
                     @endif
 
-                    @if (session("nombre"))
-                    <li class="nav-item px-2">
-                        <a class="nav-link position-relative {{Request::segment(1)=='carrito'?'active':''}}"
-                            href="{{route("carrito.index")}}"><i class="fas fa-shopping-cart me-1 ms-1"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger navbar-badge">
-                                0
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
-                        </a>
-                    </li>
+                    @if (session("rol")=="user")
+                        <li class="nav-item px-2">
+                            <a class="nav-link position-relative {{Request::segment(1)=='carrito'?'active':''}}"
+                                href="{{route("carrito.index")}}"><i class="fas fa-shopping-cart me-1 ms-1"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger navbar-badge">
+                                    {{ intval(session("numeroMuestra"))}}
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </a>
+                        </li>
                     @endif
 
                     @if (session("nombre"))
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user" class="rounded-circle"
+                            <img src="{{asset("assets/back/img/user/user.png")}}" alt="user" class="rounded-circle"
                                 width="32" height="32" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                 title="Registrado como {{session("nombre")}} ">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route("user.edit")}}">
-                                <img src="{{asset("assets/back/img/user/luzalba31.png")}}" alt="user"
+                                <img src="{{asset("assets/back/img/user/user.png")}}" alt="user"
                                     class="rounded-circle" width="64" height="64">
                                 {{session("nombre")}}</a>
                             <div class="dropdown-divider"></div>
