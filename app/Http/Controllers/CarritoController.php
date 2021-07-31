@@ -21,7 +21,7 @@ class CarritoController extends Controller
         for($i=1;$i<=$num;$i++){
             if(session("id$i") != ''){
                 $carrito[] = ["numero"=>$i,
-                    "id_pelicula"=>session("id$i"),
+                    "id"=>session("id$i"),
                     "titulo" => session("titulo$i"),
                     "precio"=>session("precio$i"),
                     "imagen"=>session("imagen$i")];
@@ -29,9 +29,8 @@ class CarritoController extends Controller
                 }
             }
         $code = md5(now().session("id_user").session("total"));
-        return $carrito["titulo"];
 
-        //return view('carrito.index', ["carrito"=>$carrito, "descripcion"=>$descripcion, "codigo"=>$code]);
+        return view('carrito.index', ["carrito"=>$carrito, "descripcion"=>$descripcion, "codigo"=>$code]);
     }
 
     /**
@@ -55,7 +54,7 @@ class CarritoController extends Controller
         session(['numero'=>intval(session("numero"))+1]);
         session(["numeroMuestra"=>intval(session("numeroMuestra"))+1]);
         $n=session("numero");
-        session(["id_pelicula$n"=>$request->id_pelicula]);
+        session(["id$n"=>$request->id_pelicula]);
         session(["titulo$n"=>$request->titulo]);
         session(["precio$n"=>$request->precio]);
         session(["imagen$n"=>$request->imagen]);
@@ -106,20 +105,20 @@ class CarritoController extends Controller
     public function destroy($id)
     {
         session(['total'=>session('total')-session("precio$id")]);
-        session()->forget("id_pelicula$id");
+        session()->forget("id$id");
         session()->forget("titulo$id");
         session()->forget("precio$id");
         session()->forget("imagen$id");
         session()->forget("numero$id");
         session(['numeroMuestra'=>intval(session("numeroMuestra"))-1]);
-        return redirect('')->action("App\Http\Controllers\CarritoController@index");
+        return redirect()->action("App\Http\Controllers\CarritoController@index");
     }
 
     public function procesar($id){
         echo $id;
         echo "<br>".session("total");
         $objFactura = new Factura();
-        $objFactura->id_usuario = session("id_usuario");
+        $objFactura->id_user = session("id_user");
         $objFactura->total=session("total");
         $objFactura->md5validacion=$id;
         $objFactura->save();
@@ -127,13 +126,13 @@ class CarritoController extends Controller
 
         $n=session("numeroMuestra");
         for($i=1;$i<$n;$i++){
-            if(session("id_pelicula$i") != ''){
+            if(session("id$i") != ''){
                 $objDetalle = new FacturaDetalle();
                 $objDetalle->id_factura = $idFactura;
-                $objDetalle->id_pelicula = session("id_pelicula$i");
+                $objDetalle->id_pelicula = session("id$i");
                 $objDetalle->precio = session("precio$i");
                 $objDetalle->save();
-                session()->forget("id_pelicula$i");
+                session()->forget("id$i");
                 session()->forget("titulo$i");
                 session()->forget("precio$i");
                 session()->forget("imagen$i");
