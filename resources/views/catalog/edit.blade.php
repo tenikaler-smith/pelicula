@@ -56,7 +56,7 @@
                                             <select name="selGenero" class=" col-sm-6 form-select dropdown form-control"
                                                 aria-label="genero">
                                                 @foreach ($generos as $genero)
-                                                <option class="dropdown-item" value="{{$genero->id}}">
+                                                <option class="dropdown-item" value="{{$genero->id}}" {{$genero->id == $resultados->id_genero ? 'selected':'' }}>
                                                     {{$genero->descripcion}}</option>
                                                 @endforeach
                                             </select>
@@ -82,9 +82,9 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="txtImagen"
-                                            class="col-sm-3 text-end control-label col-form-label">Imagen</label>
+                                        <label for="txtImagen" class="col-sm-3 text-end control-label col-form-label">Imagen</label>
                                         <div class="row col-sm-9">
+                                            <img class="col-sm-3" src="{{$resultados->imagen}}" alt="{{$resultados->titulo}}" width="100px">
                                             <input type="text" class="form-control" id="" placeholder="Imagen"
                                                 name="txtImagen" value="{{ $resultados->imagen }}">
                                         </div>

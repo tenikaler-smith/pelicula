@@ -17,7 +17,7 @@
                     <table id="zero_config" class="table table-bordered table-hover display">
                         <thead>
                             <tr class="text-bold">
-                                <th>Id</th>
+                                <th>#</th>
                                 <th>Pelicula</th>
                                 <th>Titulo</th>
                                 <th>ver</th>

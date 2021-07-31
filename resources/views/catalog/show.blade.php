@@ -41,13 +41,8 @@
                         </tr>
 
                         <tr>
-
-
-
-
                             <td>
                             </td>
-
                             <td>
                                 <form action="{{route('carrito.store')}}" method="post">
                                     @csrf
@@ -59,11 +54,11 @@
                                     <div class="modal fade" id="exampleModalFullscreen1" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel"
                                         aria-modal="true" role="dialog">
                                         <div class="modal-dialog modal-fullscreen">
-                                            <div class="modal-content">
+                                            <div class="modal-content bg-dark">
                                                 <div class="modal-header">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                                    <button type="button" class="btn btn-close btn-light text-white bg-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body bg-dark">
                                                     <iframe width="100%" height="100%" src="{{$catalogo->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </div>
                                             </div>

@@ -5,14 +5,14 @@
 @section('contenido')
 
 <p></p>
-<h3 class="text-center text-white">Generos de Peliculas</h3>
+<h3 class="text-center text-white">Lista de Facturas de las Peliculas compradas</h3>
 <p></p>
 <div class="row">
     <div class="col-12">
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Generos</h5>
+                <h5 class="card-title">Facturas</h5>
                 <div class="table-responsive">
                     <table id="zero_config" class="table table-bordered table-hover display">
                         <thead>
@@ -28,6 +28,7 @@
                             @foreach ( $facturas as $factura )
                                 <tr>
                                     <td scope="row">{{ $factura->id }}</td>
+                                    <td>{{ $factura->total}}</td>
                                     <td>{{ $factura->md5validacion }}</td>
                                     <td>{{ $factura->created_at }}</td>
                                 </tr>
