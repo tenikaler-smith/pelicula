@@ -59,7 +59,7 @@ route::get("/genero/destroy/{id}", [GeneroController::class, "destroy"])->name("
 //  para la aplicación de Carrito de Compra
 route::get('/carrito', [CarritoController::class, 'index'])->name("carrito.index");
 route::post('/carrito/store', [CarritoController::class, 'store'])->name("carrito.store");
-route::get('/carrito/delete/{id}', [CarritoController::class, 'delete'])->name("carrito.delete");
+route::get('/carrito/delete/{id}', [CarritoController::class, 'destroy'])->name("carrito.destroy");
 route::get('/procesar/{id}', [CarritoController::class, 'procesar'])->name("carrito.procesar");
 
 // para la aplicación de Facturas
