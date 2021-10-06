@@ -76,11 +76,6 @@
                     <a href="{{route("catalog.edit", ['id'=>$resultado->id ] )}}" class="btn btn-warning">Editar <i class="fas fa-edit" aria-hidden="true"></i> </a>
                     <button type="button" class="btn btn-danger text-center" data-bs-toggle="modal"
                         data-bs-target="#modelId{{ $resultado->id }}">Eliminar <i class="fas fa-trash-alt"></i></button>
-                    <!-- Button trigger modal -->
-
-
-
-
                     <!-- Modal -->
                     <div class="modal fade" id="modelId{{ $resultado->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -106,7 +101,6 @@
                     @endif
                 </div>
             </div>
-        <br>
         </div>
 
     @endforeach
