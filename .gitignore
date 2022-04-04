@@ -1,5 +1,7 @@
 /vendor/
+/vendor
 node_modules/
+/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -12,18 +14,22 @@ public/storage
 public/hot
 
 # Laravel 5 & Lumen specific with changed public path
+/public/storage
 public_html/storage
 public_html/hot
 
 storage/*.key
 .env
+.env.backup
 Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
 
-.env.backup
 .phpunit.result.cache
 docker-compose.override.yml
 /.idea
 /.vscode
+
+
+npm-debug.log
