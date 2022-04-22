@@ -40,20 +40,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->txtNombre=="" and $request->txtUser==""){
+            return back()->with("estado_todos", "todos los campos son obligatorios");
+        }
+
         if($request->txtPassword != $request->txtPassword2)
             return back()->with("estado2", "Las contraseñas no coinciden");
 
-        if($request->txtPassword=="" || $request->txtPassword2=="")
+        if($request->txtPassword=="" || $request->txtPassword2==""){
             return back()->with("estado2", "Las contraseñas no pueden estar vacias");
+        }
 
         $resultados = User::get()->where('usuario', $request->txtUser);
         $encontrado = 0;
 
-        foreach ($resultados as $resultado)
+        foreach ($resultados as $resultado){
             $encontrado = 1;
+        }
 
-        if($encontrado == 1)
+        if($encontrado == 1){
             return back()->with("estado", "El Usuario ya existe")->withInput();
+        }
 
         $obj = new User();
         $obj->usuario = $request->txtUser;
@@ -123,6 +130,9 @@ class UserController extends Controller
 
     public function login_post(Request $request)
     {
+        if($request->txtPassword==""){
+            return back()->with("estado2", "La contraseñas no puede estar vacia");
+        }
 
         $resultados = User::get()
                             ->where('usuario', $request->txtUser)

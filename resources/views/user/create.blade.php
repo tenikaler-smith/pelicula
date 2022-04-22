@@ -7,7 +7,7 @@
 @section('contenido')
 <section class="row">
 <div class="col-sm-4"></div>
-    <div class="container mt-5 pt-5 mb-5">
+    <div class="container mt-6 pt-5 mb-6">
         <div class="row">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -15,6 +15,14 @@
                         @if (session('estado'))
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>{{ session('estado') }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+                    </div>
+                    <div id="alertSuccess">
+                        @if (session('estado_todos'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{ session('estado_todos') }}</strong>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         @endif
@@ -39,30 +47,28 @@
                                 <div class="card-body">
 
                                     <div class="form-group row">
-                                        <label for="txtNombre" class="col-sm-3 text-end control-label col-form-label">Nombre</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="txtNombre" class="form-control" id="txtNombre" value="{{session('nombre')}}"
+                                        <label for="txtNombre" class="col-sm-3 control-label col-form-label">Nombre</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="txtNombre" class="form-control" id="txtNombre" value="{{session('nombre')}} {{old('txtNombre')}}">
+                                            ">
                                                 placeholder="Nombre">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="txtUser" class="col-sm-3 text-end control-label col-form-label">Usuario</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="txtUser" class="form-control" id="txtUser" value="{{session('usuario')}}"
-                                                placeholder="Usuario">
+                                        <label for="txtUser" class="col-sm-3 control-label col-form-label">Usuario</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="txtUser" class="form-control" id="txtUser" value="{{session('usuario')}}" placeholder="Usuario">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="txtPassword"
-                                            class="col-sm-3 text-end control-label col-form-label">Contraseña</label>
-                                        <div class="col-sm-9">
+                                        <label for="txtPassword" class="col-sm-3 control-label col-form-label">Contraseña</label>
+                                        <div class="col-sm-8">
                                             <input type="password" class="form-control" id="txtPassword" placeholder="Contraseña" name="txtPassword">
                                             <div id="alertSuccess">
                                                 @if (session('estado2'))
-                                                <div class="text-danger">{{ session('estado2') }}
-                                                </div>
+                                                    <div class="text-danger">{{ session('estado2') }}</div>
                                                 @endif
                                             </div>
                                         </div>
@@ -70,20 +76,19 @@
 
                                     <div class="form-group row">
                                         <label for="txtPassword2"
-                                            class="col-sm-3 text-end control-label col-form-label">Repetir Contraseña</label>
-                                        <div class="col-sm-9">
+                                            class="col-sm-3 control-label col-form-label">Repetir Contraseña</label>
+                                        <div class="col-sm-8">
                                             <input type="password" class="form-control" id="txtPassword2" placeholder="Contraseña" name="txtPassword2">
                                             <div id="alertSuccess">
                                                 @if (session('estado2'))
-                                                <div class="text-danger">{{ session('estado2') }}
-                                                </div>
+                                                    <div class="text-danger">{{ session('estado2') }}</div>
                                                 @endif
                                             </div>
-
                                         </div>
                                     </div>
 
-                                    {{-- <div class="form-group row">
+                                    {{-- 
+                                        <div class="form-group row">
                                         <label for="flImage" class="col-sm-3 text-end control-label col-form-label">Cargar Imagen</label>
                                         <div class="col-md-9">
                                             <div class="custom-file">
@@ -92,7 +97,7 @@
                                                 <div class="invalid-feedback">fallo al Cargar la imagen</div>
                                             </div>
                                         </div>
-                                    </div>
+                                        </div>
                                     --}}
 
                                     <div class="border-top">
@@ -111,6 +116,11 @@
                 </div>
             </div>
         </div>
+
     </div>
+    
+
 </section>
+
 @endsection
+
