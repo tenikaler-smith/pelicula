@@ -50,7 +50,7 @@
                                     <div class="row col-sm-9">
                                         <select name="selGenero" class=" col-sm-6 form-select dropdown form-control" aria-label="genero">
                                             @foreach ($generos as $genero)
-                                            <option class="dropdown-item" value="{{$genero->id}}">{{$genero->descripcion}}</option>
+                                            <option class="dropdown-item" value="{{$genero->id}}{{old('selGenero')}}">{{$genero->descripcion}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -75,21 +75,21 @@
                                 <div class="form-group row">
                                     <label for="txtImagen" class="col-sm-3 text-end control-label col-form-label">Imagen</label>
                                     <div class="row col-sm-9">
-                                        <input type="text" class="form-control" id="" placeholder="Imagen" name ="txtImagen">
+                                        <input type="text" class="form-control" id="" placeholder="Imagen" name ="txtImagen" value ="{{old('txtImage')}}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="txtVideo" class="col-sm-3 text-end control-label col-form-label">Video</label>
                                     <div class="row col-sm-9">
-                                        <input type="text" class="form-control" id="" placeholder="link del video" name ="txtVideo">
+                                        <input type="text" class="form-control" id="" placeholder="link del video" name ="txtVideo" value="{{old('txtImage')}}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="txtVideo" class="col-sm-3 text-end control-label col-form-label">Trailer</label>
                                     <div class="row col-sm-9">
-                                        <input type="text" class="form-control" id="" placeholder="Trailer" name ="txtTrailer">
+                                        <input type="text" class="form-control" id="" placeholder="Trailer" name ="txtTrailer" value ="{{old('txtVideo')}}">
                                     </div>
                                 </div>
 

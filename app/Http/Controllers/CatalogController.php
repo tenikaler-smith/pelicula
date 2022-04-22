@@ -46,6 +46,7 @@ class CatalogController extends Controller
      */
     public function store(Request $request)
     {
+       
         $obj = new Pelicula();
         $obj->titulo = $request->txtTitle;
         $obj->descripcion = $request->txtDescripcion;
