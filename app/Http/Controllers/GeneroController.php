@@ -42,6 +42,11 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validarForm = $request->validate([
+            'txtDescripcion' => 'required|unique:posts|max:150',
+        ]);
+
         $obj = new Genero();
         $obj->descripcion = $request->txtDescripcion;
 
